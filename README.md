@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Dependencies
+- Chrome Dev Tool 에서 forget 기능을 확인하려면 react 19 이상이여야함
+- 24년 6월 기준, 아직 React 19는 rc 버전이므로 최신 rc 버전 사용
+```json
+  "dependencies": {
+    "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
+    "next": "15.0.0-canary.7",
+    "react": "19.0.0-rc-f994737d14-20240522",
+    "react-dom": "19.0.0-rc-f994737d14-20240522"
+  },
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## `next.config.js`
+- reactCompiler: true 를 명시해줘야 react compiler 를 사용하여 빌드한다.
+```js
+const nextConfig = {
+  experimental: {
+    reactCompiler: true,
+  },
+};
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## React forget 확인
+- `yarn run dev` 실행 후, 아래와 같이 React DevTools 에서 'Memo' 뱃지가 달려있음을 확인할 수 있다. (forget 컴파일러가 자동으로 memo 처리해주었다는 뜻)
+<img width="244" alt="스크린샷 2024-06-17 오후 2 33 02" src="https://github.com/ami-ryu/react-compiler-forget-test/assets/7741547/0b3c0929-577f-4176-bcaf-0a3ae8941523">
